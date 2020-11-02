@@ -6,7 +6,6 @@
 public class Singleton : MonoBehaviour
 {
     private static Singleton _instance;
-    private static int _count;
 
     /// <summary>
     /// Unique instance of the Singleton class.
@@ -27,8 +26,6 @@ public class Singleton : MonoBehaviour
                 if (_instance == null)
                 {
                     _instance = new GameObject().AddComponent<Singleton>();
-                    _count++;
-                    Debug.Log("Singleton instance number " + _count);
                 }
             }
 
@@ -56,6 +53,5 @@ public class Singleton : MonoBehaviour
     public void HelloSingleton()
     {
         Debug.Log("Singleton is being called.");
-        Debug.Log("Debug on " + gameObject.name, gameObject);
     }
 }
