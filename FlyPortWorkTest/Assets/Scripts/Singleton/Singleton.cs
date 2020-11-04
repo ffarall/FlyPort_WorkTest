@@ -3,7 +3,7 @@
 /// <summary>
 /// Class <c>Singleton</c> models the singleton design pattern in Unity.
 /// </summary>
-public class Singleton : MonoBehaviour
+public class Singleton
 {
     private static Singleton _instance;
 
@@ -19,33 +19,14 @@ public class Singleton : MonoBehaviour
         {
             if (_instance == null)
             {
-                // Since this class inherits from MonoBehaviour, the constructor is hidden.
-                // This double check is to make sure that no other instance is present in the scene, which could have been created
-                // using the Unity Editor or with object.Instantiate().
-                _instance = FindObjectOfType<Singleton>();
-                if (_instance == null)
-                {
-                    _instance = new GameObject().AddComponent<Singleton>();
-                }
+                _instance = new Singleton();
             }
 
             return _instance;
         }
     }
 
-    private void Awake()
-    {
-        if (_instance != null)
-        {
-            // Destroying current instance of a Singleton if another instance has already been created.
-            Destroy(gameObject);
-        }
-        else
-        {
-            // Making Singleton persist in all scenes.
-            DontDestroyOnLoad(gameObject);
-        }
-    }
+    private Singleton() { }
 
     /// <summary>
     /// When called, this method shall print "Singleton is being called." in the console window.
