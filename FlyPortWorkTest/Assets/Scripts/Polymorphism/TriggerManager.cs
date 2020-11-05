@@ -17,11 +17,17 @@ public class TriggerManager : MonoBehaviour
     protected bool TriggerWhenEnter = true;
 
     protected int _currentColour = 0;
-    protected int _maxColour = 2;
+    protected int _maxColour;
 
     private void Awake()
     {
+        Init();
         ChangeColour();
+    }
+
+    protected virtual void Init()
+    {
+        _maxColour = 2;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,7 +46,7 @@ public class TriggerManager : MonoBehaviour
         }
     }
 
-    protected void ChangeColour()
+    protected virtual void ChangeColour()
     {
         Renderer render = GetComponent<Renderer>();
 
